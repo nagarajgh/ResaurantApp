@@ -1,35 +1,30 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body{
+  margin: 0;
+  padding: 0;
+  background-color: currentColor;
+  color:  #272727;
+  scroll-behavior: smooth;
+}
+.col-2{
+  display: flex;
+}
+.col-2 > div{
+  display: flex;
+  flex: 49%;
+  max-width: 49%;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+/* for mobile devices */
+@media only screen and (max-width: 640px){
+  .col-2{
+    flex-direction: column;
   }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  .col-2 > div{
+    flex: 98vw;
+    max-width: 98vw;
   }
 }
