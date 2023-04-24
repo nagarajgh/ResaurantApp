@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+:root{
+    --primary: #195a00;
+    --secondary: #EDEAE3;
+
+    /* state colors */
+    --info: #2F80ED;
+    --success: #219653;
+    --warning: #E2B93B;
+    --error: #EB5757;
+
+    /* black colors */
+    --black1: #1E1E1E;
+    --black2: #1D1D1D;
+    --black3: #282828;
+
+    /* white color */
+    --white: #FFFFFF;
+
+    /* Grey colors */
+    --grey1: #333333;
+    --grey2: #4F4F4F;
+    --grey3: #828282;
+    --grey4: #BDBDBD;
+    --grey5: #E0E0E0;
+
+    /* Font size */
+    --fs1: 14px;
+    --fs2: 16px;
+    --fs3: 18px;
+    --fs4: 20px;
+    --fs5: 24px;
+    --fs6: 32px;
+    --fs7: 40px;
+    --fs8: 48px;
+    --fs9: 60px;
+
+    /* line heights */
+    --lh1: 22px;
+    --lh2: var(--fs5);
+    --lh3: 26px;
+    --lh4: 28px;
+    --lh5: var(--fs6);
+    --lh6: var(--fs7);
+    --lh7: var(--fs8);
+    --lh8: 56px;
+    --lh9: 68px;
+
+    /* font list-style; */
+    --fs-helvetica: 'Helvetica';
+    --fs-inter: 'Inter', 'sans-serif';
+    --fs-minevar: 'Miniver','cursive';
+
+    /* Spacing */
+    --space-1 : 8px;
+    --space-2: 16px;
+    --space-3: 24px;
+    --space-4: 32px;
+    --space-5: 40px;
+    --space-6: 56px;
+    --space-7: 72px;
+    --space-8: 80px;
+    --space-9: 96px;
+    --space-10: 120px;
+}

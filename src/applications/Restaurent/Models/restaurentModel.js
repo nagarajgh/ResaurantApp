@@ -515,4 +515,5 @@ const BLOG = [
 },
 ]
 
+
 export { SECTION, MENU, FOODCATAGORY, FEATURES, TEAMS, REVIEW, BLOG };

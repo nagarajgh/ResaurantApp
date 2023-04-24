@@ -1,8 +1,10 @@
 <script>
 import Logo from "../components/logo.vue";
-import Search from "../../../assets/icons/icon-search.vue";
-import User from "../../../assets/icons/icon-user.vue";
-import Shop from "../../../assets/icons/icon-shop.vue";
+import { PhMagnifyingGlass, PhUser, PhTote } from "@phosphor-icons/vue";
+import pinia from "../../../store/store";
+import { useSignup } from "../../../store/signup";
+
+const signup = useSignup(pinia());
 export default {
   data() {
     return {
@@ -10,16 +12,21 @@ export default {
     };
   },
   components: {
-    Logo,
-    User,
-    Shop,
-    Search,
+  Logo,
+   PhMagnifyingGlass,
+   PhUser,
+   PhTote,
+  },
+  methods:{
+    logout(){
+      signup.logout()
+    }
   },
 };
 </script>
 
 <template>
-  <div class="header">
+  <div class="header z-10">
     <div class="navigation-bar bg-primary flex justify-between">
       <div class="logo"><Logo /></div>
       <div class="nav-name flex gap-8">
@@ -28,9 +35,10 @@ export default {
         </li>
       </div>
       <div class="nav-icons flex gap-8">
-        <Search />
-        <User />
-        <Shop />
+        <PhMagnifyingGlass />
+        <PhUser />
+        <PhTote />
+        <button @click="logout"><img src="../../../assets/icons/CheckSquareOffset.png" /></button>
       </div>
     </div>
   </div>
@@ -46,6 +54,7 @@ export default {
   padding: 28px 15%;
   background-color: rgba(28, 92, 0, 0.8);
   position: fixed;
+  z-index: 99;
   top: 0;
   width: 100%;
   backdrop-filter: blur(20px);

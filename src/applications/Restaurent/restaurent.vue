@@ -1,15 +1,15 @@
 <script>
 import Footer from './components/footer.vue'
 import Logo from "./components/logo.vue";
-import Shop from "../../assets/icons/icon-shop.vue";
-import Search from "../../assets/icons/icon-search.vue";
-import User from "../../assets/icons/icon-user.vue";
+import { PhMagnifyingGlass, PhUser, PhTote, PhTruck, PhTimer,PhHamburger,PhFactory } from "@phosphor-icons/vue";
 import Bars from "../../assets/icons/icon-bars.vue";
 import Close from "../../assets/icons/icon-close.vue";
 import Play from "../../assets/icons/icon-play.vue";
 import Tcard from "./components/team-card.vue";
 import Card from "./components/card.vue";
 import { FEATURE } from "./Models/cofee";
+import pinia from "../../store/store";
+import { useSignup } from "../../store/signup";
 import {
   SECTION,
   MENU,
@@ -23,6 +23,7 @@ import {
 export default {
   data() {
     return {
+      auth: useSignup(pinia()),
       feature: FEATURE,
       navigation: ["Home", "Menu", "Blog", "Pages", "About", "Shop", "Contact"],
       screenWidth: screen.width,
@@ -50,10 +51,8 @@ export default {
     };
   },
   components: {
+    PhMagnifyingGlass,PhUser,PhTote,PhTruck, PhTimer,PhHamburger,PhFactory,
     Logo,
-    Shop,
-    Search,
-    User,
     Bars,
     Close,
     Play,
@@ -183,12 +182,18 @@ export default {
           {{ nav }}
         </div>
       </div>
-      <div class="icon-group text-white flex grow justify-end">
-        <Search />
-        <RouterLink to="restaurent/signup"> 
-            <User />
+      <div class="icon-group text-white  flex grow justify-end">
+        <RouterLink :to="{name:'shop'}" >
+        <!-- <Search /> -->
+        <PhMagnifyingGlass :size="24" />
         </RouterLink>
-        <Shop />
+        <RouterLink :to="{name: 'auth'}"> 
+            <PhUser :size="24"/>
+        </RouterLink>
+        <RouterLink :to="{name: 'cart'}"> 
+          <PhTote :size="24" />
+        </RouterLink>
+        
         
       </div>
     </div>
@@ -209,9 +214,9 @@ export default {
 
     <div class="header justify-start flex align-middle">
       <div>
-        <h3 class="head-2 font-font3 text-primary text-xl mb-6">
+        <h3 class="head-2 font-font3 primary-text text-xl mb-6">
           {{ section.hero.subTitle }}
-          <div class="line text-primary"></div>
+          <div class="line primary-text"></div>
         </h3>
         <h1 class="hero-head block font-font1 text-text1 font-bold mb-8">
           {{ section.hero.title }}
@@ -243,7 +248,7 @@ export default {
       <div class="vr-line bg-text3"></div>
     </div>
 
-    <div class="about col-2 my-25 max-[640px]:my-4">
+    <div class="about column-2 my-25 max-[640px]:my-4">
       <div class="about-image">
         <img
           :src="'../../src/assets/restaurent/decoLeaf.png'"
@@ -373,7 +378,7 @@ export default {
         </button>
       </div>
     </div>
-    <div class="choose-section col-2 my-20 max-[640px]:16">
+    <div class="choose-section column-2 my-20 max-[640px]:16">
       <div class="choose-img-section">
         <img
           :src="'../../src/assets/restaurent/choose.png'"
@@ -487,7 +492,7 @@ export default {
         </div>
       </div>
     </div>
-    <div class="review-section col-2">
+    <div class="review-section column-2">
       <div
         class="review-text flex flex-col justify-start pb-16 pr-20 max-[640px]:pr-0"
       >

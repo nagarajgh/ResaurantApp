@@ -17,7 +17,7 @@ export default {
     <div class="text p-6">
       <div class="flex gap-2 mb-4">
         <img src="../../../assets/restaurent/Calendar.png" alt="" />
-        <span class="font-font1 text-text3 mr-4">{{ blog.date }}</span>
+        <span class="font-font1 text-text3 mrr-4">{{ blog.date }}</span>
         <img src="../../../assets/restaurent/Chats.png" alt="" />
         <span class="font-font1 text-text3">comments({{ blog.comments }})</span>
       </div>
@@ -55,17 +55,16 @@ export default {
   height: 24px;
   width: 24px;
 }
-@media only screen and (max-width: 640px){
+@media only screen and (max-width: 640px) {
   .blog-card {
-  background-color: #fff;
-  width: 100%;
-  height: 500px;
-} 
+    background-color: #fff;
+    width: 100%;
+    height: 500px;
+  }
 
-
-.image {
-  width: 90%;
-  height: 223px;
-}
+  .image {
+    width: 90%;
+    height: 223px;
+  }
 }
 </style>

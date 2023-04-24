@@ -18,6 +18,12 @@ export default{
                     imageName: "note",
                     route: "sticky-note"
                 },
+                {
+                    title: "Test",
+                    description: "For testing purpose",
+                    imageName: "note",
+                    route: "test"
+                },
                
             ]
         }

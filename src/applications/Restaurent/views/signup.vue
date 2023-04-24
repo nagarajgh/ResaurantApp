@@ -1,9 +1,6 @@
 <script>
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { ref } from "vue";
 import Header from "../components/header.vue";
 import Footer from "../components/footer.vue";
-import router from "../../../routes";
 import pinia from "../../../store/store";
 import { useSignup } from "../../../store/signup";
 
@@ -17,41 +14,41 @@ export default {
       password: "",
       remember: false,
       errors: "",
-      signupForm: ref({}),
     };
   },
   components: {
     Header,
     Footer,
   },
+  computed : {
+    register(){
+      return signup.isRegister
+    }
+  },
   methods: {
-    signup(){
+    signingup() {
       console.log("signup is clicked");
       const formData = {
         name: this.name,
         email: this.email,
-        password: this.password
-      }
-      signup.signedUp(formData)
-  
+        password: this.password,
+      };
+      signup.signedUp(formData);
+      this.name =""
+      this.email =""
+      this.password =""
     },
 
-    handleGoogleSignin() {
-      console.log("GoogleSignin is clicked");
-      // const provider = new GoogleAuthProvider();
-
-      // signInWithPopup(getAuth(), provider)
-      //   .then((result) => {
-      //     signup.signedUp();
-      //     signup.user.push(result.user);
-      //     console.log(signup.isSignup);
-      //     console.log(signup.user);
-      //     router.push("/restaurent");
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //     const credential = GoogleAuthProvider.credentialFromError(error);
-      //   });
+    login() {
+      console.log("login is clicked");
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+      signup.login(formData);
+    },
+    google(){
+      signup.googleSignin()
     },
   },
 };
@@ -60,13 +57,16 @@ export default {
 <template>
   <Header />
   <div class="signup bg-secondary flex justify-center py-32">
-    <div class=" bg-white flex flex-col gap-4 shadow-md  rounded-xl">
+    <div class="bg-white flex flex-col gap-4 shadow-md rounded-xl">
       <form
         @submit.prevent="handleGoogleSignin"
         class="form flex flex-col gap-4 p-8"
       >
-        <h1 class="font-font1 text-text1 text-xl font-bold">Signup</h1>
+        <h1 class="font-font1 text-text1 text-xl font-bold">
+          {{ register ? "Sign Up" : " Log In" }}
+        </h1>
         <input
+          v-if="register"
           class="h-11 rounded-md"
           id="name"
           type="text"
@@ -97,18 +97,32 @@ export default {
           />
           <span class="text-text1 text-sm">Remember me?</span>
         </div>
-        <button @click="signup" class="py-2 bg-primary text-white mt-4 rounded">Sign Up</button>
+        <button
+          v-if="register"
+          @click="signingup"
+          class="py-2 bg-primary text-white mt-4 rounded"
+        >
+          Sign Up
+        </button>
+        <button
+          v-else
+          @click="login"
+          class="py-2 bg-primary text-white mt-4 rounded"
+        >
+          Log In
+        </button>
+
         <p class="text-sm text-text3 mb-4 ml-auto">Forget Password?</p>
-      </form>
-      <h3 class="text-center p-1 or">OR</h3>
-      <!-- <button @click="handleGoogleSignin" class="social-signup flex">
+        <h3 class="text-center p-1 or">OR</h3>
+        <button @click="google" class="social-signup flex">
           <img src="../../../assets/restaurent/Google.png" />
           <span class="text">Sign up with Google</span>
         </button>
         <button class="social-signup flex">
           <img src="../../../assets/restaurent/apple.png" />
           <span class="text">Sign up with Apple</span>
-        </button> -->
+        </button>
+      </form>
     </div>
   </div>
   <Footer />
